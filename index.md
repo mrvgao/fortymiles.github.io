@@ -9,4 +9,6 @@
 
 # Update log:
 
+	## 2015.6.26
+
 	1. Add Designer information when reservation.
