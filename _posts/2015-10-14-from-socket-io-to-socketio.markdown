@@ -31,7 +31,7 @@ To a host, a network is just another I/O device that servers as a source and sin
 
 The *sockets interfaces* is a set of functions that are userd in conjunction with the Unix I/O functions to build network applications. It has been implements on the most modern systems, including all Unix variants, Windows.
 
-[!get the socket hirechy](/assets/socket_hir.png)
+![get the socket hirechy](/assets/socket_hir.png)
 
 {% highlight c%}
 /* Generic socket address structure (for connect, bind, and accept) */
