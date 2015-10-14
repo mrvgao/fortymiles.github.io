@@ -19,7 +19,7 @@ With this model, an application consists of a *server* process and one or omre *
 3. The server sends a response to the client, and then waits for the next request. For example, a Web server sends the file back to a client.
 4. The client receives the response and manipulates it.Forexample,afteraWeb browser receives a page from the server, it displays it on the screen.
 
-[!Image of server four process]
+![Image of server four process](/assets/socket-four-steps.png)
 
 **Noticw**: The clients and servers and process and not machines.  A single host could run many servers or clients, and a server or client cloud run at different hosts too.
 
