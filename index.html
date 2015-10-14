@@ -1,12 +1,23 @@
-<h1>Angular Notes</h1>
+---
+layout: default
+---
 
-<ol>
-<li><p>Avoid minify</p>
+<div class="home">
 
-<pre><code>function PhoneListCtrl($scope, $http){...}
-PhoneListCtrl.$inject = ['$scope', '$http'];
-phonecatApp.controller('PhoneListCtrl', PhoneListCtrl);
-</code></pre></li>
-</ol>
+  <h1 class="page-heading">Posts</h1>
 
-Add Test Code
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>
