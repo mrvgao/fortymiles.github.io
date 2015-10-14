@@ -21,7 +21,7 @@ With this model, an application consists of a *server* process and one or omre *
 
 ![Image of server four process](/assets/socket-four-steps.png)
 
-**Noticw**: The clients and servers and process and not machines.  A single host could run many servers or clients, and a server or client cloud run at different hosts too.
+**Notic**: The clients and servers and process and not machines.  A single host could run many servers or clients, and a server or client cloud run at different hosts too.
 
 **When regradless of the mapping of clients and servers to hosts. The client-server model is the same**.
 
