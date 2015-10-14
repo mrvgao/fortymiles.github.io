@@ -2,11 +2,10 @@
 layout: post
 tittle: "index"
 permalink: /blog/technology/
+author: "Minchiuan Gao"
 date: 2015-10-14 19:10:57
 ---
 # From Socket to Socket.io
-
-Minchiuan Gao 2015-Oct
 
 ### 0. Client-Server Model And Network
 
