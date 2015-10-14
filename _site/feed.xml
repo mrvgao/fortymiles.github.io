@@ -6,8 +6,8 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 14 Oct 2015 19:31:53 +0800</pubDate>
-    <lastBuildDate>Wed, 14 Oct 2015 19:31:53 +0800</lastBuildDate>
+    <pubDate>Wed, 14 Oct 2015 19:43:51 +0800</pubDate>
+    <lastBuildDate>Wed, 14 Oct 2015 19:43:51 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -25,9 +25,9 @@ With this model, an application consists of a &lt;em&gt;server&lt;/em&gt; proces
 
 &lt;ol&gt;
   &lt;li&gt;When a client needs service, it initiates a transaction by sending a request to the server. For example, when a Web browser needs a file, it sends a request to a Web server.&lt;/li&gt;
-  &lt;li&gt;Theserverreceivestherequest,interpretsit,andmanipulatesitsresourcesin the appropriate way. For example, when a Web server receives a request from a browser, it reads a disk file.&lt;/li&gt;
+  &lt;li&gt;The server receives the request,interprets it,and manipulates its resourcesin the appropriate way. For example, when a Web server receives a request from a browser, it reads a disk file.&lt;/li&gt;
   &lt;li&gt;The server sends a response to the client, and then waits for the next request. For example, a Web server sends the file back to a client.&lt;/li&gt;
-  &lt;li&gt;Theclientreceivestheresponseandmanipulatesit.Forexample,afteraWeb browser receives a page from the server, it displays it on the screen.&lt;/li&gt;
+  &lt;li&gt;The client receives the response and manipulates it.Forexample,afteraWeb browser receives a page from the server, it displays it on the screen.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;[!Image of server four process]&lt;/p&gt;
@@ -152,15 +152,14 @@ With this model, an application consists of a &lt;em&gt;server&lt;/em&gt; proces
 
 &lt;p&gt;To establish a WebSocket connection, the client and server upgrade from the HTTP protocol to the WebSocket protocol during their initial handshake, as shown in the following example:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;GET /text HTTP/1.1
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;GET /text HTTP/1.1
 Upgrade: WebSocket
 Connection: Upgrade
 Host: www.websocket.org
 …\r\n 
 HTTP/1.1 101 WebSocket Protocol Handshake
 Upgrade: WebSocket
-Connection: Upgrade
-&lt;/code&gt;&lt;/pre&gt;
+Connection: Upgrade&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Once established, WebSocket data frames can be sent back and forth between the client and the server in full-duplex mode. Both text and binary frames can be sent full-duplex, in either direction at the same time.&lt;/p&gt;
 

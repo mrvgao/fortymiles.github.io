@@ -15,9 +15,9 @@ Every network applicaiton is based on the client-server model.
 With this model, an application consists of a *server* process and one or omre *client* process.
 
 1. When a client needs service, it initiates a transaction by sending a request to the server. For example, when a Web browser needs a file, it sends a request to a Web server.
-2. Theserverreceivestherequest,interpretsit,andmanipulatesitsresourcesin the appropriate way. For example, when a Web server receives a request from a browser, it reads a disk file.
+2. The server receives the request,interprets it,and manipulates its resourcesin the appropriate way. For example, when a Web server receives a request from a browser, it reads a disk file.
 3. The server sends a response to the client, and then waits for the next request. For example, a Web server sends the file back to a client.
-4. Theclientreceivestheresponseandmanipulatesit.Forexample,afteraWeb browser receives a page from the server, it displays it on the screen.
+4. The client receives the response and manipulates it.Forexample,afteraWeb browser receives a page from the server, it displays it on the screen.
 
 [!Image of server four process]
 
@@ -133,14 +133,16 @@ Web Sockets remove the overhead and dramatically reduce complexity.
 
 To establish a WebSocket connection, the client and server upgrade from the HTTP protocol to the WebSocket protocol during their initial handshake, as shown in the following example:
 
-	GET /text HTTP/1.1
-	Upgrade: WebSocket
-	Connection: Upgrade
-	Host: www.websocket.org
-	…\r\n 
-	HTTP/1.1 101 WebSocket Protocol Handshake
-	Upgrade: WebSocket
-	Connection: Upgrade
+{% highlight html %}
+GET /text HTTP/1.1
+Upgrade: WebSocket
+Connection: Upgrade
+Host: www.websocket.org
+…\r\n 
+HTTP/1.1 101 WebSocket Protocol Handshake
+Upgrade: WebSocket
+Connection: Upgrade
+{% endhighlight %}
 
 Once established, WebSocket data frames can be sent back and forth between the client and the server in full-duplex mode. Both text and binary frames can be sent full-duplex, in either direction at the same time.
 
