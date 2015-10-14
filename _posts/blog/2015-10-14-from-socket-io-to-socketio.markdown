@@ -1,6 +1,7 @@
 ---
 layout: post
 tittle: "index"
+permalink: /blog/technology/
 date: 2015-10-14 19:10:57
 ---
 # From Socket to Socket.io
