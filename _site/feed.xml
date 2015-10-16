@@ -6,29 +6,31 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 16 Oct 2015 10:09:03 +0800</pubDate>
-    <lastBuildDate>Fri, 16 Oct 2015 10:09:03 +0800</lastBuildDate>
+    <pubDate>Fri, 16 Oct 2015 19:53:28 +0800</pubDate>
+    <lastBuildDate>Fri, 16 Oct 2015 19:53:28 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
-        <title>Index</title>
-        <description>&lt;h1 id=&quot;the-index-of-articles&quot;&gt;The index of articles&lt;/h1&gt;
-&lt;ul&gt;
-  
-    &lt;li&gt;
-      &lt;a href=&quot;/index/&quot;&gt;Index&lt;/a&gt;
-    &lt;/li&gt;
-  
-    &lt;li&gt;
-      &lt;a href=&quot;/blog/technology/&quot;&gt;From Socket Io To Socketio&lt;/a&gt;
-    &lt;/li&gt;
-  
-&lt;/ul&gt;
+        <title>The Think Of Python For Web Restful</title>
+        <description>&lt;h1 id=&quot;a-thought-of-django-and-restful&quot;&gt;A thought of Django and RESTFUL.&lt;/h1&gt;
 
+&lt;p&gt;Today I have tried using Django-RESTful framework. But find we will do so much useless things. For examples, the &lt;em&gt;serializer&lt;/em&gt; process, and the complited database model design process. Because this project is for real-time mailiy, and have so much documented data, which let the design for RDBM is much difficute to do.&lt;/p&gt;
+
+&lt;p&gt;And, bacause the NodeJs will return the &lt;em&gt;JSON&lt;/em&gt; very naturally, and support MongoDB very will, so I want to try change this project’s main programming language to NodeJs + Redis + MongoDB. Python will focus on the data analyse and compute task.&lt;/p&gt;
+
+&lt;h2 id=&quot;day-1&quot;&gt;day 1&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;learn the mongoDB very quickly.&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;use-nodejs--express--mongodb-to-implements-this-project-in-demo&quot;&gt;use NodeJS + Express + MongoDB to implements this project in Demo.&lt;/h2&gt;
 </description>
-        <pubDate>Fri, 16 Oct 2015 02:21:13 +0800</pubDate>
-        <link>http://yourdomain.com/index/</link>
-        <guid isPermaLink="true">http://yourdomain.com/index/</guid>
+        <pubDate>Sat, 17 Oct 2015 03:43:19 +0800</pubDate>
+        <link>http://yourdomain.com/daily/thought-for-technology/django-for-restful</link>
+        <guid isPermaLink="true">http://yourdomain.com/daily/thought-for-technology/django-for-restful</guid>
         
         
       </item>
