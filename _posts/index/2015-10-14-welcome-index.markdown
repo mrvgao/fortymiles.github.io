@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "index"
+title: "Index"
 permalink: /index/
 date: 2015-10-15 18:21:13
 ---
