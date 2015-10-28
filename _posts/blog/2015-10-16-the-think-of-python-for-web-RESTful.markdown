@@ -16,4 +16,4 @@ And, bacause the NodeJs will return the *JSON* very naturally, and support Mongo
 
 >> learn the mongoDB very quickly.
 
-## use NodeJS + Express + MongoDB to implements this project in Demo.
+use NodeJS + Express + MongoDB to implements this project in Demo.
