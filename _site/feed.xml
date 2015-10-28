@@ -6,9 +6,45 @@
 </description>
     <link>http://wwww.gaominquan.com/</link>
     <atom:link href="http://wwww.gaominquan.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 28 Oct 2015 18:22:56 +0800</pubDate>
-    <lastBuildDate>Wed, 28 Oct 2015 18:22:56 +0800</lastBuildDate>
+    <pubDate>Wed, 28 Oct 2015 20:17:09 +0800</pubDate>
+    <lastBuildDate>Wed, 28 Oct 2015 20:17:09 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>A Clean Jekyll theme</title>
+        <description>&lt;h3 id=&quot;article&quot;&gt;Article&lt;/h3&gt;
+
+&lt;h4 id=&quot;introduction&quot;&gt;Introduction&lt;/h4&gt;
+&lt;p&gt;some words&lt;/p&gt;
+
+&lt;h3 id=&quot;content&quot;&gt;Content&lt;/h3&gt;
+</description>
+        <pubDate>Thu, 29 Oct 2015 04:15:15 +0800</pubDate>
+        <link>http://wwww.gaominquan.com/jekyll/update/2015/10/29/test-files.html</link>
+        <guid isPermaLink="true">http://wwww.gaominquan.com/jekyll/update/2015/10/29/test-files.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Test Files</title>
+        <description>&lt;h3 id=&quot;article&quot;&gt;Article&lt;/h3&gt;
+
+&lt;h4 id=&quot;introduction&quot;&gt;Introduction&lt;/h4&gt;
+&lt;p&gt;some words&lt;/p&gt;
+
+&lt;h3 id=&quot;content&quot;&gt;Content&lt;/h3&gt;
+</description>
+        <pubDate>Wed, 28 Oct 2015 00:00:00 +0800</pubDate>
+        <link>http://wwww.gaominquan.com/2015/10/28/test-files.html</link>
+        <guid isPermaLink="true">http://wwww.gaominquan.com/2015/10/28/test-files.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>The Think Of Python For Web Restful</title>
