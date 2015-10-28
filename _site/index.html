@@ -1,4 +1,59 @@
-<div class="home">
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>minchiuan</title>
+  <meta name="description" content="Hi, I'm minchiuan, a programmer in Hangzhou, China. I'm also studing for a master degree in Zhejiang University. I'm interested in algorithm and dynamic system.
+">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://wwww.gaominquan.com/">
+  <link rel="alternate" type="application/rss+xml" title="minchiuan" href="http://wwww.gaominquan.com/feed.xml" />
+</head>
+
+
+  <body>
+
+    <div class="cover">
+      <div class="clock"></div>
+      <div class='hours'></div>
+      <div class='seconds'></div>
+      <div class='minutes'></div>
+      <div class="site-name">
+        <div class="site-name__inner">
+          <div class="name">minchiuan</div>
+          <div class="desc">Hi, I'm minchiuan, a programmer in Hangzhou, China. I'm also studing for a master degree in Zhejiang University. I'm interested in algorithm and dynamic system.
+</div>
+          <div class="btn">Blog</div>
+          <div class="btn btn-chinese">中文</div>
+        </div>
+      </div>
+    </div>
+
+    <header class="site-header">
+
+      <div class="wrapper">
+
+        <nav class="site-nav">
+            
+              
+              <a class="page-link" href="/about/">About</a>
+              
+            
+              
+            
+              
+            
+              
+            
+        </nav>
+      </div>
+    </header>
+    <div class="page-content">
+        <div class="home">
   <ul class="post-list">
     
       <li>
@@ -10,10 +65,74 @@
     
       <li>
           <a class="post-link" href="/blog/technology/">
-            From Socket Io To Socketio (1)
+            From socket io to socket.io
             <div class="post-meta">Oct 15, 2015</div>
+          </a>
+      </li>
+    
+      <li>
+          <a class="post-link" href="/jekyll/update/2015/09/27/clean-theme.html">
+            A Clean Jekyll theme
+            <div class="post-meta">Sep 27, 2015</div>
+          </a>
+      </li>
+    
+      <li>
+          <a class="post-link" href="/jekyll/update/2015/09/26/hello.html">
+            Hello
+            <div class="post-meta">Sep 26, 2015</div>
           </a>
       </li>
     
   </ul>
 </div>
+    </div>
+
+<script>
+  setInterval(function() {
+    var seconds = new Date().getSeconds();
+    var sdegree = seconds * 6 + 270;
+    seconds = ("0" + seconds).slice(-2);
+    var secondSel = document.querySelector(".seconds");
+
+    secondSel.style.transform = "rotate(" + sdegree + "deg) translate(160px) rotate(-" + sdegree + "deg)";
+    secondSel.innerHTML = seconds;
+
+    var minutes = new Date().getMinutes();
+    var mdegree = minutes * 6 + 270;
+    var minutesSel = document.querySelector(".minutes");
+    minutes = ("0" + minutes).slice(-2);
+
+    minutesSel.style.transform = "rotate(" + mdegree + "deg) translate(181px) rotate(-" + mdegree + "deg)";
+    minutesSel.innerHTML =  minutes;
+
+    var hours = new Date().getHours();
+    var hoursSel = document.querySelector(".hours");
+
+    if (hours > 12) {
+      hours = hours - 12;
+    }
+
+    hours = ("0" + hours).slice(-2);
+
+    hoursSel.innerHTML = hours;
+  }, 1000);
+
+  var btnSel = document.querySelector('.btn');
+  var header = document.getElementsByTagName('header')[0];
+
+  btnSel.addEventListener("click", function() {
+      header.scrollIntoView({block:"end", behavior:"smooth"});
+    //header.scrollIntoView();
+  }, false);
+
+  var chSel = document.querySelector('.btn-chinese');
+  chSel.addEventListener("click", function() {
+      header.scrollIntoView({block:"end", behavior:"smooth"});
+  }, false);
+
+</script>
+
+  </body>
+
+</html>

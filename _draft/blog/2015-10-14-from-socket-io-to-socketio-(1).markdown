@@ -1,11 +1,12 @@
 ---
 layout: post
-title: "From socket io to socket.io"
+tittle: "index"
 permalink: /blog/technology/
 author: "Minchiuan Gao"
 date: 2015-10-14 19:10:57
-categories: jekyll update
 ---
+# From Socket to Socket.io
+
 ### 0. Client-Server Model And Network
 
 all network applications are based on the same basic programming model, have similar overall logical structures, and rely on the same programming interface.(1)
@@ -13,12 +14,10 @@ all network applications are based on the same basic programming model, have sim
 Every network applicaiton is based on the client-server model.
 With this model, an application consists of a *server* process and one or omre *client* process.
 
-
-#### Steps
-- When a client needs service, it initiates a transaction by sending a request to the server. For example, when a Web browser needs a file, it sends a request to a Web server.
-- The server receives the request,interprets it,and manipulates its resourcesin the appropriate way. For example, when a Web server receives a request from a browser, it reads a disk file.
-- The server sends a response to the client, and then waits for the next request. For example, a Web server sends the file back to a client.
-- The client receives the response and manipulates it.Forexample,afteraWeb browser receives a page from the server, it displays it on the screen.
+1. When a client needs service, it initiates a transaction by sending a request to the server. For example, when a Web browser needs a file, it sends a request to a Web server.
+2. The server receives the request,interprets it,and manipulates its resourcesin the appropriate way. For example, when a Web server receives a request from a browser, it reads a disk file.
+3. The server sends a response to the client, and then waits for the next request. For example, a Web server sends the file back to a client.
+4. The client receives the response and manipulates it.Forexample,afteraWeb browser receives a page from the server, it displays it on the screen.
 
 ![Image of server four process](/assets/socket-four-steps.png)
 
