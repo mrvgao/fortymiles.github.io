@@ -4,10 +4,8 @@ title: About
 permalink: /about/
 ---
 
-Hi, I'm Minchiuan Gao, and Chinese name is 高民权. This is my personal page. 
+This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
 
-I'm a software engineering graduate in Zhejiang University, Hangzhou, China.
+You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
 
-You can find out more info about me at [github.com](http://github.com/fortymiles)
-
-This is the basic jeklly theme :)
+You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
