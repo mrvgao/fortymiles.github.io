@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "不要因为一台笔记本而断送一名计算机工作者的一生"
-permalink: /blog/thought-computer-and-programmer
+permalink: /blog/thought-computer-and-programmer/
 author: "Minchiuan Gao"
 date: 2015-11-24 17:26:10
 categories: jekyll update
