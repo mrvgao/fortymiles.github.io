@@ -4,8 +4,11 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+I'm Minchiuan Gao, from China. Hangzhou. I am a software engineer and a R&D Director in Xinshu.net.
+I'm also a graduate in Zhejiang University.
 
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
+I'm interested in Network, especiall Social Network, and dynamic system. By the way, computer science is my work, alse is my friend. 
 
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+Thanks for reading. Have a good day.
+
+You can find the source code for my project at[github.com/fortyMiles](http://github.com/fortyMiles)
