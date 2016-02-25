@@ -1,4 +1,14 @@
-# Build a chat application based on NodeJs, Socket.io, and redis.
+---
+layout: post
+title: "Test Post"
+permalink: /blog/technology/
+author: "Minchiuan Gao"
+date: 2016-2-14 19:10:57
+categories: jekyll update
+---
+## Build a chat application based on NodeJs, Socket.io, and redis.
+
+Test
 
 Reference:
 
