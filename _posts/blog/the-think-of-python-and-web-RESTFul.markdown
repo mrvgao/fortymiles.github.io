@@ -4,9 +4,9 @@ tittle: "index"
 permalink: /daily/thought-for-technology/django-for-restful
 author: "Minchiuan Gao"
 date: 2015-10-16 19:43:19
+categories: jekyll update
 ---
-
-# A thought of Django and RESTFUL.
+### A thought of Django and RESTFUL.
 
 Today I have tried using Django-RESTful framework. But find we will do so much useless things. For examples, the *serializer* process, and the complited database model design process. Because this project is for real-time mailiy, and have so much documented data, which let the design for RDBM is much difficute to do.
 
