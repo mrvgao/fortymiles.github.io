@@ -1,7 +1,7 @@
 # Site settings
-title: Nice Blog
-name: Nice Blog # your name
-email: youremail@example.com # your email address
+title: Minchiuan's Blog
+name: Minchiuan Gao # your name
+email: mqgao@outlook.com # your email address
 description: >
     Notes by Minchiuan. # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
