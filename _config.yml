@@ -1,16 +1,19 @@
 # Site settings
-title: minchiuan
-email: minchiuan.gao@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-    Hi, I'm minchiuan, a programmer in Hangzhou, China.
-    I'm also studing for a master degree in Zhejiang University.
-    I'm interested in algorithm and dynamic system.
+title: Nice Blog
+name: Nice Blog # your name
+email: youremail@example.com # your email address
+description: >
+    A Simple Jekyll Blog Theme. # this means to ignore newlines until "baseurl:"
+baseurl: "/Nice_Blog" # the subpath of your site, e.g. /blog
+url: "https://itisbenjamin.github.io" # the base hostname & protocol for your site
+twitter_username: itisbenjamin1 # your Twitter username
+github_username: itisbenjamin # your Github username
+disqus_username: itisbenjamin # your disqus username
 
+google-analytics: UA-75034651-1 # add it if you have one
 
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://wwww.gaominquan.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+skillstree: true # turn on or off the skills tree in about page
 
 # Build settings
+permalink: none
 markdown: kramdown
