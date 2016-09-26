@@ -4,7 +4,7 @@ title: "From socket io to socket.io"
 permalink: /blog/technology/
 author: "Minchiuan Gao"
 date: 2015-10-14 19:10:57
-categories: jekyll update
+categories: Technology
 ---
 ### 0. Client-Server Model And Network
 
