@@ -8,7 +8,9 @@ tags: reading notes psychology
 finished: false
 ---
 
-# Chapter 1 **The building Blocks of Relationships**
+## Chapter 1 **The building Blocks of Relationships**
+
+### THE NATURE AND IMPORTANCE OF INTIMACY
 
 At the core of our social nature is our need for intimate relationships.
 
@@ -50,3 +52,5 @@ When such trust is lost, people often become wary and reduce the openness and in
 #### Committed
 
 They expect their parterships to continue indefinitely, and the invest the time, effort, and resources that are needed to realize that goal. If not, people who were once very close may find themselves less and less interdependent and knowledgable about each other as time gose by. 
+
+### THE INFLUENCE OF CULTURE
