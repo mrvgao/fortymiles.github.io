@@ -54,3 +54,9 @@ When such trust is lost, people often become wary and reduce the openness and in
 They expect their parterships to continue indefinitely, and the invest the time, effort, and resources that are needed to realize that goal. If not, people who were once very close may find themselves less and less interdependent and knowledgable about each other as time gose by. 
 
 ### THE INFLUENCE OF CULTURE
+
+As growing rate of cohibitation, the longer that people cohibit,the less enthusiastic about marriage -- and the more accepting of divorce -- they become.
+
+The focus of self-realization has led us to expect more personal gratification from our intimate partnerships -- more pleasure and delight, and fewer hassles and sacrifices.
+
+
