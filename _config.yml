@@ -15,5 +15,5 @@ github_username: fortymiles # your Github username
 skillstree: true # turn on or off the skills tree in about page
 
 # Build settings
-permalink: /archive/
+permalink: None
 markdown: kramdown
