@@ -2,33 +2,38 @@
 <html>
   <head>
       
-  {% include head.html %}
+      {% include head.html %}
 
-  {% if site.google-analytics %}
-  {% include google-analytics.html %}
-  {% endif %}
 
-  {% if page.url == "/404.html" %}
-  <meta http-equiv="refresh" content="10; url={{ site.baseurl }}">
-  {% endif %}
+      {% if page.use_math %}
+      {% include mathjax_support %}
+      {% endif %}
+
+      {% if site.google-analytics %}
+      {% include google-analytics.html %}
+      {% endif %}
+
+      {% if page.url == "/404.html" %}
+      <meta http-equiv="refresh" content="10; url={{ site.baseurl }}">
+      {% endif %}
 
   </head>
 
   <body>
 
-  {% include header.html %}
+      {% include header.html %}
 
-  <div class="wrapper">
-        {{ content }}
-  </div>
+      <div class="wrapper">
+          {{ content }}
+      </div>
 
-</body>
+  </body>
 
-<foot>
+  <foot>
 
-    {% include footer.html %}
-    {% include foot.html %}
+  {% include footer.html %}
+  {% include foot.html %}
 
-</foot>
+  </foot>
 
 </html>
