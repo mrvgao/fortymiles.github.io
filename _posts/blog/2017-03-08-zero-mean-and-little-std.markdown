@@ -8,9 +8,9 @@ use_math: true
 categories: Machine Learning
 ---
 
-Notice: *this article is a craft*
+((These notes are currently in draft form and under development))
 
-When we build a machine leanring model, as we know, we need to scale the normalize the train data. What we want to is that let the MEAN(average) of the train data to be ZERO, and standard deviation to be as small as possible. 
+When we build a machine leanring model, as we know, we need to scale and normalize the train data. What we want to is that let the MEAN(average) of the train data to be ZERO, and standard deviation to be as small as possible. 
 
 But, Why? 
 
@@ -18,13 +18,15 @@ In this Article, I will show the reason that why need the MEAN to be ZERO and st
 
 ### 1. Algebra Explaination. 
 
-To keep the question simple, we assume the train set is one dimension. means, $x \in R^1 $, and we assume the hypothesis function is a linear function $f(x) = kx + b$. 
+#### Simple Optimization Appraoch
+
+To keep the question simple, we assume that the train set is one dimension. means, $x \in R^1 $, and we assume the hypothesis function is a linear function $f(x) = kx + b$. 
 
 Therefore, we could define the error function or loss function by L2 distence:
 
 $$loss(k, b) = \sum_{i=1}^{n}(kx_i+b-y_i)^2$$
 
-`In order to keep the partial less simple, we often add the `$\frac{1}{2} $` before `$\sum$
+`In order to keep the partial simple, we often add the `$\frac{1}{2} $` before `$\sum$
 
 Therefore, we get: 
 
@@ -32,7 +34,7 @@ $$ \frac{\partial{loss}}{\partial{k}} = 2\sum_{i=1}^{n}(kx_i+b-y_i)x_i \thicksim
 
 > If we add  $\frac{1}{2}$ before $\sum$, we will get $\frac{\partial{loss}}{\partial{k}} = \sum_{i=1}^{n}(kx_i+b-y_i)x_i$)$
 
-**However, because we usually use the bath-mini gradient descent approach, not the full-batch gradient descent appraoch, we could know that the $\frac{\partial{loss}}{\partial{k}} \nsim O(\sum_{i=1}^{n}((x_i)^2))$, and in order to get the right K or b, we need the train over and over again(we call it one epoch). **
+**However, because we usually use the bath-mini gradient descent approach, not the full-batch gradient descent appraoch, we could know that the $\frac{\partial{loss}}{\partial{k}} \nsim O(\sum_{i=1}^{n}((x_i)^2))$, and in order to get the right K or b, we need the train over and over again, which we call it one epoch. **
 
 But, 
 
