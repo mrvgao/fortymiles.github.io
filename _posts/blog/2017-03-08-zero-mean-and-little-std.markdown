@@ -26,51 +26,51 @@ Therefore, we could define the error function or loss function by L2 distence:
 
 $$loss(k, b) = \sum_{i=1}^{n}(kx_i+b-y_i)^2$$
 
-`In order to keep the partial simple, we often add the `$\frac{1}{2} $` before `$\sum$
+`In order to keep the partial simple, we often add the `$$\frac{1}{2}$$` before `$$\sum$$
 
 Therefore, we get: 
 
 $$ \frac{\partial{loss}}{\partial{k}} = 2\sum_{i=1}^{n}(kx_i+b-y_i)x_i \thicksim O(\sum(x_i)^2) $$
 
-> If we add  $\frac{1}{2}$ before $\sum$, we will get $\frac{\partial{loss}}{\partial{k}} = \sum_{i=1}^{n}(kx_i+b-y_i)x_i$)$
+> If we add  $$\frac{1}{2} $$ before $$\sum$$, we will get $$ \frac{\partial{loss}}{\partial{k}} = \sum_{i=1}^{n}(kx_i+b-y_i)x_i $$
 
-**However, because we usually use the bath-mini gradient descent approach, not the full-batch gradient descent appraoch, we could know that the $\frac{\partial{loss}}{\partial{k}} \nsim O(\sum_{i=1}^{n}((x_i)^2))$, and in order to get the right K or b, we need the train over and over again, which we call it one epoch. **
+**However, because we usually use the bath-mini gradient descent approach, not the full-batch gradient descent appraoch, we could know that the $$ \frac{\partial{loss}}{\partial{k}} \nsim O(\sum_{i=1}^{n}((x_i)^2)) $$, and in order to get the right K or b, we need the train over and over again, which we call it one epoch. **
 
 But, 
 
-$\frac{\partial{loss}}{\partial{k}} \sim O(\sum_{i\in mini-batch}(x_i)^2)$
+$$ \frac{\partial{loss}}{\partial{k}} \sim O(\sum_{i\in mini-batch}(x_i)^2)$$
 
 **In a simple word. We juse use a little train data when each train epoch. **
 
 In flollowing, I will approve why the large mean of X set and the large stddve of X set are bad for trainning.
 
-$\because$  very large mean of $<x_1, x_2, x_3, \dots x_n>, x \in mini-batch-train-set$ 
+$$\because \quad $$  very large mean of $$ <x_1, x_2, x_3, \dots x_n>, \quad x \in mini-batch-train-set$$
 
-$\therefore \frac{\partial{loss}}{\partial{k}}$ is very large
+$$\therefore \frac{\partial{loss}}{\partial{k}} $$ is very large
 
-and we define the learning rate to be $\alpha$
+and we define the learning rate to be $$\alpha$$
 
-Therefore, $\delta{k} = \alpha \frac{\partial{loss}}{\partial{k}}$
+Therefore, $$\delta{k} = \alpha \frac{\partial{loss}}{\partial{k}}$$
 
-$\therefore \delta k$ is very large
+$$\therefore \delta k$$ is very large
 
-**Now, we assume at some time, we get the $\hat{k} = 5.3 $, and the right $ k=5.0 $, but if the $\delta{k}$ is too large, such as 15, then after iteration, we get the $\hat{k} = -9.7$, which let we get the right $k$ much more furthure.**
+**Now, we assume at some time, we get the $$\hat{k} = 5.3 $$, and the right $$ k=5.0 $$, but if the $$\delta{k}$$ is too large, such as 15, then after iteration, we get the $$\hat{k} = -9.7$$, which let we get the right $$k$$ much more furthure.**
 
-**In a simple word, we need keep $\delta{k}$ to be small or keep $\hat{k}$ consistent ahead to the right $k$**, but if we get the very large $\delta{k}$, the **convergence** will be very slow, or even *not convergent*.
+**In a simple word, we need keep $$\delta{k}$$ to be small or keep $$\hat{k}$$ consistent ahead to the right $$k$$**, but if we get the very large $$\delta{k}$$, the **convergence** will be very slow, or even *not convergent*.
 
-> So, if the Trainset has the very large mean, whatever the mean is very large positive or very large negative, because every iteration the $\delta{k} = \alpha \frac{\partial{loss}}{\partial{k}}$, the convergence will become *much slow* or even *impossible*.
+> So, if the Trainset has the very large mean, whatever the mean is very large positive or very large negative, because every iteration the $$\delta{k} = \alpha \frac{\partial{loss}}{\partial{k}}$$, the convergence will become *much slow* or even *impossible*.
 
 #### Why Small Stddve? 
 
 *(What's the large stddve? Such as {101, -1, 123, -34}; What's the small stddve? Such as {101, 100, 122, ...}*
 
-As the same reason,  if the standard deviation of $x_1, x_2, \dots, x_m $ is very large. 
+As the same reason,  if the standard deviation of $$x_1, x_2, \dots, x_m $$ is very large. 
 
 the $$\delta{k}$$
 
 will change very *rapidly*. 
 
-This also makes the convergence of $\hat{k}$ is be *slowly* or *impossible.*
+This also makes the convergence of $$\hat{k}$$ is be *slowly* or *impossible.*
 
 #### Conslusion
 
@@ -79,7 +79,7 @@ The reason why we should make the **mean** and **stddve** to be small and near t
 
 #### Practice
 
-If we have the train data set $ \vec{x_1} = <101, 101>, y_1 = 1, \vec{x_2} = <101, 99>, y_2=0$, what should we transform to keep the mean and std small?
+If we have the train data set $$ \vec{x_1} = <101, 101>, y_1 = 1, \vec{x_2} = <101, 99>, y_2=0$$, what should we transform to keep the mean and std small?
 
 > Hint: trying to divide the number by mean or substrct by some number. 
 
