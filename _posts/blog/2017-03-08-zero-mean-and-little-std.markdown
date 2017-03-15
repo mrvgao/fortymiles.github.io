@@ -8,7 +8,7 @@ use_math: true
 categories: Machine Learning
 ---
 
-((These notes are currently in draft form and under development))
+(These notes are currently in draft form and under development)
 
 When we build a machine leanring model, as we know, we need to scale and normalize the train data. What we want to is that let the MEAN(average) of the train data to be ZERO, and standard deviation to be as small as possible. 
 

@@ -4,11 +4,6 @@
       
       {% include head.html %}
 
-
-      {% if page.use_math %}
-      {% include mathjax_support %}
-      {% endif %}
-
       {% if site.google-analytics %}
       {% include google-analytics.html %}
       {% endif %}
@@ -35,5 +30,6 @@
   {% include foot.html %}
 
   </foot>
-
+  <!-- mathjax -->
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </html>
