@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>In Neural Networks: Why do we need the MEAN to be near ZERO and stddev to be small?</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="高民权的记录
+">
+        <meta name="keywords" content="机器学习,,编程技术，博客
+">
+        <link rel="canonical"
+        href="/machine_learning/2017/03/08/zero-mean-and-little-std/">
+
+        <!-- Harmony styles -->
+        <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+
+        <!-- Font -->
+        <link href='/assets/css/google/Raleway:400,300,600.css' rel='stylesheet' type='text/css'>
+
+        <!-- Modernizr js -->
+        <script async src="/assets/js/modernizr.js"></script>
+
+        <!-- IE Fixes -->
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script type='text/javascript'>
+            var _vds = _vds || [];
+            window._vds = _vds;
+            (function(){
+              _vds.push(['setAccountId', '9cceacae2fcdfd30']);
+              (function() {
+                var vds = document.createElement('script');
+                vds.type='text/javascript';
+                vds.async = true;
+                vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(vds, s);
+              })();
+            })();
+        </script>
+    </head>
+    <body class="theme-base-01">
+<!--         <header class="main-header">
+            <div class="wc-container">
+                <h1><a href="/">高民权（Minchiuan Gao）| 的博客</a></h1>
+                <h2>高民权的记录
+</h2>
+                <ul>
+	<li>
+		<a href="/about">About</a><span>/</span>
+	</li>
+	<li>
+		<a href="/blog">Blog</a><span>/</span>
+	</li>
+</ul>
+
+            </div>
+        </header> -->
+        <div class="page-content wc-container">
+
+	<div class="post">
+		<h1>In Neural Networks: Why do we need the MEAN to be near ZERO and stddev to be small?</h1>
+		<p class="post-meta">
+			
+      <span class="categories">
+      machine learning,theoritical,mathmatical
+      </span> |
+	    
+	    <span class="post-date">
+    	Mar 8, 2017
+	    </span>
+	    
+            
+              
+                <span>By Gao Minquan</span>
+              
+            
+              
+                  <span>By </span>
+                  <a href="fortymiles.github.com" target="_blank"></a>
+              
+            
+        
+		</p>
+		<div class="post">
+			<p>When we build a machine leanring model, as we know, we need to scale and normalize the train data. What we want to is that let the MEAN(average) of the train data to be ZERO, and standard deviation to be as small as possible.</p>
+
+<p>But, Why?</p>
+
+<p>(These notes are currently in draft form and under development)</p>
+
+<p>In this Article, I will show the reason that why need the MEAN to be ZERO and stddeve to be small.</p>
+
+<h3 id="1-algebra-explaination">1. Algebra Explaination.</h3>
+
+<h4 id="simple-optimization-appraoch">Simple Optimization Appraoch</h4>
+
+<p>To keep the question simple, we assume that the train set is one dimension. means, $x \in R^1 $, and we assume the hypothesis function is a linear function $f(x) = kx + b$.</p>
+
+<p>Therefore, we could define the error function or loss function by L2 distence:</p>
+
+<script type="math/tex; mode=display">loss(k, b) = \sum_{i=1}^{n}(kx_i+b-y_i)^2</script>
+
+<p><code>In order to keep the partial simple, we often add the </code><script type="math/tex">\frac{1}{2}</script><code> before </code><script type="math/tex">\sum</script></p>
+
+<p>Therefore, we get:</p>
+
+<script type="math/tex; mode=display">\frac{\partial{loss}}{\partial{k}} = 2\sum_{i=1}^{n}(kx_i+b-y_i)x_i \thicksim O(\sum(x_i)^2)</script>
+
+<blockquote>
+  <p>If we add  <script type="math/tex">\frac{1}{2}</script> before <script type="math/tex">\sum</script>, we will get <script type="math/tex">\frac{\partial{loss}}{\partial{k}} = \sum_{i=1}^{n}(kx_i+b-y_i)x_i</script></p>
+</blockquote>
+
+<p>**However, because we usually use the bath-mini gradient descent approach, not the full-batch gradient descent appraoch, we could know that the <script type="math/tex">\frac{\partial{loss}}{\partial{k}} \nsim O(\sum_{i=1}^{n}((x_i)^2))</script>, and in order to get the right K or b, we need the train over and over again, which we call it one epoch. **</p>
+
+<p>But,</p>
+
+<script type="math/tex; mode=display">\frac{\partial{loss}}{\partial{k}} \sim O(\sum_{i\in mini-batch}(x_i)^2)</script>
+
+<p>**In a simple word. We juse use a little train data when each train epoch. **</p>
+
+<p>In flollowing, I will approve why the large mean of X set and the large stddve of X set are bad for trainning.</p>
+
+<p><script type="math/tex">\because \quad</script>  very large mean of <script type="math/tex">% <![CDATA[
+<x_1, x_2, x_3, \dots x_n>, \quad x \in mini-batch-train-set %]]></script></p>
+
+<p><script type="math/tex">\therefore \frac{\partial{loss}}{\partial{k}}</script> is very large</p>
+
+<p>and we define the learning rate to be <script type="math/tex">\alpha</script></p>
+
+<p>Therefore, <script type="math/tex">\delta{k} = \alpha \frac{\partial{loss}}{\partial{k}}</script></p>
+
+<p><script type="math/tex">\therefore \delta k</script> is very large</p>
+
+<p><strong>Now, we assume at some time, we get the <script type="math/tex">\hat{k} = 5.3</script>, and the right <script type="math/tex">k=5.0</script>, but if the <script type="math/tex">\delta{k}</script> is too large, such as 15, then after iteration, we get the <script type="math/tex">\hat{k} = -9.7</script>, which let we get the right <script type="math/tex">k</script> much more furthure.</strong></p>
+
+<p><strong>In a simple word, we need keep <script type="math/tex">\delta{k}</script> to be small or keep <script type="math/tex">\hat{k}</script> consistent ahead to the right <script type="math/tex">k</script></strong>, but if we get the very large <script type="math/tex">\delta{k}</script>, the <strong>convergence</strong> will be very slow, or even <em>not convergent</em>.</p>
+
+<blockquote>
+  <p>So, if the Trainset has the very large mean, whatever the mean is very large positive or very large negative, because every iteration the <script type="math/tex">\delta{k} = \alpha \frac{\partial{loss}}{\partial{k}}</script>, the convergence will become <em>much slow</em> or even <em>impossible</em>.</p>
+</blockquote>
+
+<h4 id="why-small-stddve">Why Small Stddve?</h4>
+
+<p><em>(What’s the large stddve? Such as {101, -1, 123, -34}; What’s the small stddve? Such as {101, 100, 122, …}</em></p>
+
+<p>As the same reason,  if the standard deviation of <script type="math/tex">x_1, x_2, \dots, x_m</script> is very large.</p>
+
+<p>the <script type="math/tex">\delta{k}</script></p>
+
+<p>will change very <em>rapidly</em>.</p>
+
+<p>This also makes the convergence of <script type="math/tex">\hat{k}</script> is be <em>slowly</em> or <em>impossible.</em></p>
+
+<h4 id="conslusion">Conslusion</h4>
+
+<p>The reason why we should make the <strong>mean</strong> and <strong>stddve</strong> to be small and near to zero is that we should keep the convergence be quickly and consistent.</p>
+
+<h4 id="practice">Practice</h4>
+
+<p>If we have the train data set <script type="math/tex">% <![CDATA[
+\vec{x_1} = <101, 101>, y_1 = 1, \vec{x_2} = <101, 99>, y_2=0 %]]></script>, what should we transform to keep the mean and std small?</p>
+
+<blockquote>
+  <p>Hint: trying to divide the number by mean or substrct by some number.</p>
+</blockquote>
+
+<h5 id="practice-solution--one-possible-result-could-be-1-1-1--1-a-more-normal-approach-is">Practice Solution:  One possible result could be [1, 1], [1, -1], a more normal approach is</h5>
+
+<pre><code>X = (X - X.mean())/(X.max()-X.min())
+</code></pre>
+
+<p>you could try it by yourself, and check the new X’s mean and std.</p>
+
+<h3 id="2-geometry-explaination-approach">2. Geometry Explaination Approach.</h3>
+
+		</div>
+	</div>
+
+
+	
+	<div class="related">
+		<h4>相关文章 / Related </h4>
+		<ul class="posts">
+		    
+		    <li>
+			  <span>25 Nov 2015 &raquo;</span>
+			  <a href="/article/2015/11/25/computer-and-programmer/">不要因为一台笔记本而断送一名计算机工作者的一生</a>
+		    </li>
+		    
+		    <li>
+			  <span>31 Dec 2014 &raquo;</span>
+			  <a href="/%E8%AF%97%E6%AD%8C/2014/12/31/poems-collects/">早期诗歌拾录--秋夜随笔及其他</a>
+		    </li>
+		    
+		</ul>
+	</div>
+	
+
+	<div class="post-footer">
+		<div class="column-1">
+			
+				<a href="/article/2015/11/25/computer-and-programmer/"><< 上一篇</a>
+			
+		</div>
+		<div class="column-2"><a href="/ ">首页</a></div>
+		<div class="column-3">
+			
+				<span>下一篇 >></span>
+			
+		</div>
+	</div>
+</div>
+
+        <footer class="main-footer">
+            <div class="wc-container">
+                <div class="column one">
+                    <h6>相关链接</h6>
+<ul class="menu">
+    <li><a href="https://e-abu.github.io">绘画</a></li>
+</ul>
+
+                </div>
+                <div class="column two">
+                    <h6>Connect Me</h6>
+
+<ul class="social-media">
+
+
+    
+    <li>
+        <a title="fortymiles on Github"
+            href="https://github.com/fortymiles"
+            class="github wc-img-replace" target="_blank">Github</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+</ul>
+
+                </div>
+            </div>
+            <p class="wc-container disclaimer">
+                
+Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>
+            </p>
+        </footer>
+        <script type="text/javascript">
+          /* To avoid render blocking css */
+          var cb = function() {
+            var l = document.createElement('link'); l.rel = 'stylesheet';
+            
+            l.href = '/assets/css/google/Ubuntu:Mono:subsetlatin.css';
+            var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+          };
+          var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+              webkitRequestAnimationFrame || msRequestAnimationFrame;
+          if (raf) raf(cb);
+          else window.addEventListener('load', cb);
+        </script>
+        <!-- jQuery -->
+        <script src="/assets/js/jquery.min.js"></script>
+        <!-- When no internet load JQuery from local -->
+        <script>window.jQuery || document.write('<script src="/assets/js/jquery.min.js"><\/script>')</script>
+        <!-- Site js -->
+        <script src="/assets/js/all.js"></script>
+        <!-- Google analytics  -->
+        
+
+    </body>
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'] ],
+    displayMath: [ ['$$','$$'] ],
+  }
+});
+    </script>
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+</html>

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>高民权（Minchiuan Gao）| 的博客</title>
+    <description>高民权的记录
+</description>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sun, 04 Jun 2017 19:35:13 +0800</pubDate>
+    <lastBuildDate>Sun, 04 Jun 2017 19:35:13 +0800</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>In Neural Networks: Why do we need the MEAN to be near ZERO and stddev to be small?</title>
+        <description>&lt;p&gt;When we build a machine leanring model, as we know, we need to scale and normalize the train data. What we want to is that let the MEAN(average) of the train data to be ZERO, and standard deviation to be as small as possible.&lt;/p&gt;
+
+&lt;p&gt;But, Why?&lt;/p&gt;
+
+&lt;p&gt;(These notes are currently in draft form and under development)&lt;/p&gt;
+
+&lt;p&gt;In this Article, I will show the reason that why need the MEAN to be ZERO and stddeve to be small.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-algebra-explaination&quot;&gt;1. Algebra Explaination.&lt;/h3&gt;
+
+&lt;h4 id=&quot;simple-optimization-appraoch&quot;&gt;Simple Optimization Appraoch&lt;/h4&gt;
+
+&lt;p&gt;To keep the question simple, we assume that the train set is one dimension. means, $x \in R^1 $, and we assume the hypothesis function is a linear function $f(x) = kx + b$.&lt;/p&gt;
+
+&lt;p&gt;Therefore, we could define the error function or loss function by L2 distence:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;loss(k, b) = \sum_{i=1}^{n}(kx_i+b-y_i)^2&lt;/script&gt;
+
+&lt;p&gt;&lt;code&gt;In order to keep the partial simple, we often add the &lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;\frac{1}{2}&lt;/script&gt;&lt;code&gt; before &lt;/code&gt;&lt;script type=&quot;math/tex&quot;&gt;\sum&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Therefore, we get:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\partial{loss}}{\partial{k}} = 2\sum_{i=1}^{n}(kx_i+b-y_i)x_i \thicksim O(\sum(x_i)^2)&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If we add  &lt;script type=&quot;math/tex&quot;&gt;\frac{1}{2}&lt;/script&gt; before &lt;script type=&quot;math/tex&quot;&gt;\sum&lt;/script&gt;, we will get &lt;script type=&quot;math/tex&quot;&gt;\frac{\partial{loss}}{\partial{k}} = \sum_{i=1}^{n}(kx_i+b-y_i)x_i&lt;/script&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;**However, because we usually use the bath-mini gradient descent approach, not the full-batch gradient descent appraoch, we could know that the &lt;script type=&quot;math/tex&quot;&gt;\frac{\partial{loss}}{\partial{k}} \nsim O(\sum_{i=1}^{n}((x_i)^2))&lt;/script&gt;, and in order to get the right K or b, we need the train over and over again, which we call it one epoch. **&lt;/p&gt;
+
+&lt;p&gt;But,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\partial{loss}}{\partial{k}} \sim O(\sum_{i\in mini-batch}(x_i)^2)&lt;/script&gt;
+
+&lt;p&gt;**In a simple word. We juse use a little train data when each train epoch. **&lt;/p&gt;
+
+&lt;p&gt;In flollowing, I will approve why the large mean of X set and the large stddve of X set are bad for trainning.&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\because \quad&lt;/script&gt;  very large mean of &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+&lt;x_1, x_2, x_3, \dots x_n&gt;, \quad x \in mini-batch-train-set %]]&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\therefore \frac{\partial{loss}}{\partial{k}}&lt;/script&gt; is very large&lt;/p&gt;
+
+&lt;p&gt;and we define the learning rate to be &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Therefore, &lt;script type=&quot;math/tex&quot;&gt;\delta{k} = \alpha \frac{\partial{loss}}{\partial{k}}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\therefore \delta k&lt;/script&gt; is very large&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Now, we assume at some time, we get the &lt;script type=&quot;math/tex&quot;&gt;\hat{k} = 5.3&lt;/script&gt;, and the right &lt;script type=&quot;math/tex&quot;&gt;k=5.0&lt;/script&gt;, but if the &lt;script type=&quot;math/tex&quot;&gt;\delta{k}&lt;/script&gt; is too large, such as 15, then after iteration, we get the &lt;script type=&quot;math/tex&quot;&gt;\hat{k} = -9.7&lt;/script&gt;, which let we get the right &lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt; much more furthure.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;In a simple word, we need keep &lt;script type=&quot;math/tex&quot;&gt;\delta{k}&lt;/script&gt; to be small or keep &lt;script type=&quot;math/tex&quot;&gt;\hat{k}&lt;/script&gt; consistent ahead to the right &lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;&lt;/strong&gt;, but if we get the very large &lt;script type=&quot;math/tex&quot;&gt;\delta{k}&lt;/script&gt;, the &lt;strong&gt;convergence&lt;/strong&gt; will be very slow, or even &lt;em&gt;not convergent&lt;/em&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;So, if the Trainset has the very large mean, whatever the mean is very large positive or very large negative, because every iteration the &lt;script type=&quot;math/tex&quot;&gt;\delta{k} = \alpha \frac{\partial{loss}}{\partial{k}}&lt;/script&gt;, the convergence will become &lt;em&gt;much slow&lt;/em&gt; or even &lt;em&gt;impossible&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;why-small-stddve&quot;&gt;Why Small Stddve?&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;(What’s the large stddve? Such as {101, -1, 123, -34}; What’s the small stddve? Such as {101, 100, 122, …}&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;As the same reason,  if the standard deviation of &lt;script type=&quot;math/tex&quot;&gt;x_1, x_2, \dots, x_m&lt;/script&gt; is very large.&lt;/p&gt;
+
+&lt;p&gt;the &lt;script type=&quot;math/tex&quot;&gt;\delta{k}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;will change very &lt;em&gt;rapidly&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;This also makes the convergence of &lt;script type=&quot;math/tex&quot;&gt;\hat{k}&lt;/script&gt; is be &lt;em&gt;slowly&lt;/em&gt; or &lt;em&gt;impossible.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;conslusion&quot;&gt;Conslusion&lt;/h4&gt;
+
+&lt;p&gt;The reason why we should make the &lt;strong&gt;mean&lt;/strong&gt; and &lt;strong&gt;stddve&lt;/strong&gt; to be small and near to zero is that we should keep the convergence be quickly and consistent.&lt;/p&gt;
+
+&lt;h4 id=&quot;practice&quot;&gt;Practice&lt;/h4&gt;
+
+&lt;p&gt;If we have the train data set &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\vec{x_1} = &lt;101, 101&gt;, y_1 = 1, \vec{x_2} = &lt;101, 99&gt;, y_2=0 %]]&gt;&lt;/script&gt;, what should we transform to keep the mean and std small?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Hint: trying to divide the number by mean or substrct by some number.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5 id=&quot;practice-solution--one-possible-result-could-be-1-1-1--1-a-more-normal-approach-is&quot;&gt;Practice Solution:  One possible result could be [1, 1], [1, -1], a more normal approach is&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;X = (X - X.mean())/(X.max()-X.min())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;you could try it by yourself, and check the new X’s mean and std.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-geometry-explaination-approach&quot;&gt;2. Geometry Explaination Approach.&lt;/h3&gt;
+</description>
+        <pubDate>Wed, 08 Mar 2017 00:00:00 +0800</pubDate>
+        <link>/machine_learning/2017/03/08/zero-mean-and-little-std/</link>
+        <guid isPermaLink="true">/machine_learning/2017/03/08/zero-mean-and-little-std/</guid>
+        
+        <category>machine learning</category>
+        
+        <category>theoritical</category>
+        
+        <category>mathmatical</category>
+        
+        
+        <category>machine_learning</category>
+        
+      </item>
+    
+      <item>
+        <title>不要因为一台笔记本而断送一名计算机工作者的一生</title>
+        <description>&lt;p&gt;当年(2010年), 我在大学做班长，曾经遭到过一次“弹劾”。是因为在兰州读大学的时候，当时评选“贫困生”，我们学院其他班级的规定是“有电脑”的不许写申请，当时我做班长，坚决反对我们班也这样做，因为我认为我们是计算机系的学生，计算机之于我们就像铁锹之余农民，笛子之于笛手，照相机之于摄影师一样。我们以后是要以这个吃饭的。 可是当时却引起了一系列批评我的声音，因为我是有电脑的人，所以很多人私底下议论应该是我为了自己的助学金所以才反对这个政策，以致于有相当的人组织去辅导员那里告黑状。&lt;/p&gt;
+
+&lt;p&gt;后来来到了杭州读研究生，研究生的时候上课，基本上讲台下边清一色的Mac，最近一段时间我都在紫金港，常常去图书馆自习，在图书馆看到编程的学生，大多数也都是用Mac，接触的本科生，只要是和计算机、设计相关的学生大多也用的是Mac。&lt;/p&gt;
+
+&lt;p&gt;读大学的时候，我们大多数人还都觉得用Mac的人都是白富美或者高富帅，有很多男生宁愿花7，8千买一台游戏本，也不买一台6000块的Mac Air，而在这里，Mac Book却几乎成了每个计算机、设计相关专业的人必须要有的东西。很多人从来没有也不愿意接触Mac，使得他们认为苹果笔记本基本上就是给“iOS”开发的人使用的。&lt;/p&gt;
+
+&lt;p&gt;一台苹果笔记本，对于本科生而言，对于提高计算机水平，真的很有帮助，因为它的工作环境上Unix的，对于操作系统、网络通信这些东西，就在平时使用中加深了影响，也提供了一个良好的“实验”环境，而且unix内置的vim，emacs，grep，awk，socket等等，都是一个良好的计算机专业工作者必须掌握的知识，使用Mac，起码可以让学生对Unix这个更强大的操作系统有所了解，真正得买入计算机的世界。这对于以后不论是要科研还是要做工程都是很重要的。&lt;/p&gt;
+
+&lt;p&gt;很难相信，大学四年对于这些计算机原理性的东西完全不了解, 或者仅仅是略知一二的学生，能找到多好的工作，或者能搞多有意义的研究。&lt;/p&gt;
+
+&lt;p&gt;水平中上的本科毕业生，完全可以找到12k左右的工作，所谓的一台 Mac Pro，也不过是以后自己一个月的工资而已。&lt;/p&gt;
+
+&lt;p&gt;如果要搞科研，图形学，机器学习，分布式这些在Mac上都能更好的进行。有很多事情在windows上，很难进行，甚至于无法进行。&lt;/p&gt;
+
+&lt;p&gt;我并不是推崇一台苹果笔记本就能使得使用者的计算机水平都提高多少，也不是建议大家都去买Mac，我当时也是用一台3000多块钱的笔记本，装的ubuntu，也学到了很多东西。但是从中反映的现象却让我难过。 本来落后的地方更应该通过投资教育追赶上发达地方，然后，对于学计算机的学生，家长甚至不愿意买一台笔记本，就连学生自己也不愿意。&lt;/p&gt;
+
+&lt;p&gt;这个事情只是教育落后地区众多事情的一个小小例子。遇到这些问题，大多数人都会说那是因为“穷”，可是对于普通家庭，一台3000块钱的笔记本电脑真的是一笔不能负担的开销吗？ 关键在于思想的落后。&lt;/p&gt;
+
+&lt;p&gt;再穷不能穷教育，再苦不能苦孩子。这句话说了多少年，但是这个口号恰恰说明了，往往要穷就先琼教育，要苦就先苦孩子。甘肃前几年80亿修了一条高速公路，运营了80天，然后质量不合格，严重破损需要重建。这些钱，如果帮助贫困学生，不知道能带来多大的帮助。&lt;/p&gt;
+</description>
+        <pubDate>Wed, 25 Nov 2015 01:26:10 +0800</pubDate>
+        <link>/article/2015/11/25/computer-and-programmer/</link>
+        <guid isPermaLink="true">/article/2015/11/25/computer-and-programmer/</guid>
+        
+        <category>critical</category>
+        
+        <category>artical</category>
+        
+        
+        <category>article</category>
+        
+      </item>
+    
+      <item>
+        <title>早期诗歌拾录--秋夜随笔及其他</title>
+        <description>&lt;h3 id=&quot;前言&quot;&gt;前言&lt;/h3&gt;
+&lt;p&gt;近日翻看自己之前的记录，感慨自己早年的时候确实一个文艺青年，经常写诗作赋，虽然大多是口水打油诗，但是有几首感觉还看得过去，为了避免以后丢失，故整理出来。&lt;/p&gt;
+
+&lt;blockquote&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;秋夜随笔&quot;&gt;秋夜随笔&lt;/h2&gt;
+
+&lt;p&gt;(2014-11)&lt;/p&gt;
+
+&lt;p&gt;蝉鸣江愈冷  夜静草微风&lt;/p&gt;
+
+&lt;p&gt;孤灯长向里  石桥二三声&lt;/p&gt;
+
+&lt;p&gt;晚星染秋痕  旅人待良辰&lt;/p&gt;
+
+&lt;p&gt;梦中无所忆  唯有雨倾城&lt;/p&gt;
+
+&lt;p&gt;–高析 甲午年九月&lt;/p&gt;
+
+&lt;blockquote&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;陇上春至&quot;&gt;陇上春至&lt;/h2&gt;
+
+&lt;p&gt;(2015-02)&lt;/p&gt;
+
+&lt;p&gt;暖风沐雨迎新绿&lt;/p&gt;
+
+&lt;p&gt;草中黄鸟复唧唧&lt;/p&gt;
+
+&lt;p&gt;游人自起游园意&lt;/p&gt;
+
+&lt;p&gt;布衣但愁农忙时&lt;/p&gt;
+
+&lt;p&gt;高析 乙未年正月初二&lt;/p&gt;
+
+&lt;blockquote&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;短歌行&quot;&gt;短歌行&lt;/h2&gt;
+
+&lt;p&gt;(2015-03)&lt;/p&gt;
+
+&lt;p&gt;东南有海 大而为洋&lt;/p&gt;
+
+&lt;p&gt;敖广动之 风起鸥殇&lt;/p&gt;
+
+&lt;p&gt;若其静之 印宇之光&lt;/p&gt;
+
+&lt;p&gt;海不自多 饮河茫茫&lt;/p&gt;
+
+&lt;p&gt;水何澹澹 西北始往&lt;/p&gt;
+
+&lt;p&gt;生于苍茫 泠于朔方&lt;/p&gt;
+
+&lt;p&gt;我自凛冽 沐雨风霜&lt;/p&gt;
+
+&lt;p&gt;祁连无尽 天山雪藏&lt;/p&gt;
+
+&lt;p&gt;西北风狂 东海水汤&lt;/p&gt;
+
+&lt;p&gt;路崎且岖 何惧漫长&lt;/p&gt;
+
+&lt;p&gt;不忘前路 不吝旧伤&lt;/p&gt;
+
+&lt;p&gt;路遥山毅 但为君往&lt;/p&gt;
+
+&lt;p&gt;–二零一四年十一月&lt;/p&gt;
+
+&lt;blockquote&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;程序员的爱情&quot;&gt;程序员的爱情&lt;/h2&gt;
+
+&lt;p&gt;(2013.12)&lt;/p&gt;
+
+&lt;p&gt;一&lt;/p&gt;
+
+&lt;p&gt;自从遇见你的那天起&lt;/p&gt;
+
+&lt;p&gt;每一天便从枚举值&lt;/p&gt;
+
+&lt;p&gt;变成了布尔值&lt;/p&gt;
+
+&lt;p&gt;–有你的日子和没你的日子&lt;/p&gt;
+
+&lt;p&gt;二&lt;/p&gt;
+
+&lt;p&gt;从那天开始&lt;/p&gt;
+
+&lt;p&gt;我的梦想和希望&lt;/p&gt;
+
+&lt;p&gt;由整形变成了浮点数&lt;/p&gt;
+
+&lt;p&gt;想多长 就有多长&lt;/p&gt;
+
+&lt;p&gt;只是一直忘了告诉你&lt;/p&gt;
+
+&lt;p&gt;你是指数 我是小小的底数&lt;/p&gt;
+
+&lt;p&gt;没有你 我仅仅是个卑微的小数字&lt;/p&gt;
+
+&lt;p&gt;三&lt;/p&gt;
+
+&lt;p&gt;过去无论你是否愿意低头看看&lt;/p&gt;
+
+&lt;p&gt;你始终未知&lt;/p&gt;
+
+&lt;p&gt;我的守护进程一直在为你等待&lt;/p&gt;
+
+&lt;p&gt;曾经多少次&lt;/p&gt;
+
+&lt;p&gt;想跳出自己的单线程&lt;/p&gt;
+
+&lt;p&gt;却发现 爱上你&lt;/p&gt;
+
+&lt;p&gt;无法中断&lt;/p&gt;
+
+&lt;blockquote&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;like&quot;&gt;Like&lt;/h2&gt;
+
+&lt;p&gt;(2016.9)&lt;/p&gt;
+
+&lt;p&gt;There are some errors in the scattered fragments&lt;/p&gt;
+
+&lt;p&gt;while I am thinking about what behaviors&lt;/p&gt;
+
+&lt;p&gt;should I do to be with you.&lt;/p&gt;
+
+&lt;p&gt;In all the hardest period, I love you most.&lt;/p&gt;
+
+&lt;p&gt;Sometimes, I just want to listen to a complete song of you.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 31 Dec 2014 00:00:00 +0800</pubDate>
+        <link>/%E8%AF%97%E6%AD%8C/2014/12/31/poems-collects/</link>
+        <guid isPermaLink="true">/%E8%AF%97%E6%AD%8C/2014/12/31/poems-collects/</guid>
+        
+        
+        <category>诗歌</category>
+        
+      </item>
+    
+  </channel>
+</rss>

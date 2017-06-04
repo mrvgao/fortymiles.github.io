@@ -1,0 +1,16 @@
+<div id="categories" class="page-content wc-container">
+  <h4>分类目录</h4>
+  {% for category in site.categories %}
+    {% capture category_name %}{{ category | first }}{% endcapture %}
+    <div>
+     <h6 class="subtitle">{{ category_name }}</h6>
+     <ul class="posts">
+     {% for post in site.posts %}
+       {% if post.categories contains category_name %}
+         <li><a class="decoration" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
+       {% endif %}
+     {% endfor %}
+     </ul>
+    </div>
+  {% endfor %}
+</div>
