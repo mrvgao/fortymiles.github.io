@@ -11,6 +11,7 @@ tags:
 - theoritical
 - mathmatical
 
+score: 99
 categories: Machine_Learning
 ---
 
@@ -18,6 +19,10 @@ categories: Machine_Learning
 When we build a machine leanring model, as we know, we need to scale and normalize the train data. What we want to is that let the MEAN(average) of the train data to be ZERO, and standard deviation to be as small as possible. 
 
 But, Why? 
+
+中文序: 对Deep Learning 略有了解的人都知道，在训练之前我们需要把数据整理， mean接近0， stddev很小， 这是为什么呢？ 
+
+因为技术类的文章涉及太多专业词汇，故用英文写作。 
 
 (These notes are currently in draft form and under development)
 
