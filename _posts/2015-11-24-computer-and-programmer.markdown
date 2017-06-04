@@ -7,7 +7,7 @@ tags:
 - critical
 - artical
 categories: 
-- Article
+- 杂文
 date: 2015-11-24 17:26:10
 ---
 

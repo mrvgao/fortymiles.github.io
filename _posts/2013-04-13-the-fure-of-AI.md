@@ -8,7 +8,7 @@ author:
 tags: 
 - artical
 
-categories: Artical
+categories: 杂文 
 
 ---
 
